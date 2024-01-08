@@ -15,7 +15,6 @@ public class stringLinkedList {
         Node(String data) {
             this.data = data;
             this.next = null;
-            size++; // Incrementing size here is not recommended as it should be managed separately.
         }
     }
 
@@ -24,7 +23,7 @@ public class stringLinkedList {
         newNode.next = head;
         head = newNode;
         size++; // Increment the size when adding a new node.
-        System.out.println("> Added " + data + " to the start.");
+        printAdded(data, "front");
     }
 
     public void addLast(String data) {
@@ -32,6 +31,7 @@ public class stringLinkedList {
         if (head == null) {
             head = newNode;
             size++; // Increment the size when adding a new node to an empty list.
+            printAdded(data, "end");
             return;
         }
         Node lastNode = head;
@@ -41,43 +41,32 @@ public class stringLinkedList {
         }
         lastNode.next = newNode;
         size++; // Increment the size when adding a new node.
-        printAdded(data);
-    } 
-    public void printAdded(String data){
-        System.out.println("> Added " + data + " to the end.");
-        
-    }
-
-    public void printList(int size) {
-        Node currNode = head;
-        System.out.print("Size: " + (size-1) + "\t\t");
-        System.out.print("Current List: ");
-        while (currNode != null) {
-            System.out.print(currNode.data + " -> ");
-            currNode = currNode.next;
-        }
-        System.out.println("null");
+        printAdded(data, "end");
     }
 
     public void removeFirst() {
+
         if (head == null) {
-            System.out.println("Empty list, nothing to delete.");
+            System.out.println("##### Empty list, nothing to delete.");
             return;
         }
-        head = head.next;
         size--; // Decrement the size when removing a node.
+        printRemoved(head.data, "front");
+        head = head.next;
     }
 
     public void removeLast() {
         if (head == null) {
-            System.out.println("Empty list, nothing to delete.");
+            System.out.println("##### Empty list, nothing to delete.");
             return;
         }
-        size--; // Decrement the size when removing a node.
         if (head.next == null) {
+            printRemoved(head.data, "end");
             head = null;
+            size--;
             return;
         }
+        size--;
         Node currNode = head;
         Node prevNode = null;
         while (currNode.next != null) {
@@ -85,6 +74,7 @@ public class stringLinkedList {
             currNode = currNode.next;
         }
         prevNode.next = null;
+        printRemoved(currNode.data, "end");
     }
 
     public int getSize() {
@@ -92,6 +82,7 @@ public class stringLinkedList {
     }
 
     public void reverseList() {
+        System.out.println("@@@@@ Reversing the Linked List");
         if (head == null || head.next == null) {
             return;
         }
@@ -108,33 +99,61 @@ public class stringLinkedList {
         head = prevNode;
     }
 
+    public void printAdded(String data, String location) {
+        System.out.println(">>>>> Added \"" + data + "\" to the " + location);
+    }
+
+    public void printRemoved(String data, String location) {
+        System.out.println("<<<<< Removed \"" + data + "\" from " + location);
+    }
+
+    public void printList(int size) {
+        Node currNode = head;
+        System.out.print("Size: " + (size) + "\t\t");
+        System.out.print("Current List: ");
+        while (currNode != null) {
+            System.out.print("[" + currNode.data + "] -> ");
+            currNode = currNode.next;
+        }
+        System.out.println("null");
+    }
+
     public static void main(String[] args) {
         stringLinkedList list = new stringLinkedList();
         System.out.print("\033[H\033[2J");
-        
+
         list.printList(list.getSize());
+
         list.addLast("name");
         list.printList(list.getSize());
+        
         list.addLast("is");
         list.printList(list.getSize());
+
         list.addLast("Navneet");
         list.printList(list.getSize());
-        // list.printList();
 
         list.addFirst("My");
         list.printList(list.getSize());
-        // System.out.println("Size: " + );
-
-        list.removeFirst();
-        list.printList(list.getSize());
-        // list.printList();
-
-        list.removeLast();
-        list.printList(list.getSize());
-        // list.printList();
 
         list.reverseList();
         list.printList(list.getSize());
-        // list.printList();
+        
+        list.reverseList();
+        list.printList(list.getSize());
+
+        list.removeFirst();
+        list.printList(list.getSize());
+        
+        list.removeLast();
+        list.printList(list.getSize());
+
+        list.removeFirst();
+        list.printList(list.getSize());
+
+        list.removeLast();
+        list.printList(list.getSize());
+
+        list.removeLast();
     }
 }
