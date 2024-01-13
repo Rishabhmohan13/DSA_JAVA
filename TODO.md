@@ -1,9 +1,10 @@
 # TODO
-- [ ] menuStack.java
+- [x] menuStack.java
 ---
 - [ ] stringQueue.java
 - [ ] collectionQueue.java
+- [ ] menuQueue.java
 ---
 - [x] stringLinkedList.java
-- [ ] collectionLinkedList.java
+- [x] collectionLinkedList.java
 
