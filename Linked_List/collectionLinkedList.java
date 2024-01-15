@@ -25,7 +25,7 @@ public class collectionLinkedList {
         cars.addLast("Ferrari");
         print(cars.size(), cars);
 
-        cars.addFirst("Porche");
+        cars.addFirst("Porsche");
         print(cars.size(), cars);
 
         cars.add(2, "Mercedes");
