@@ -17,7 +17,6 @@ public class infixToPostfix {
             default:
                 return 0;
         }
-
     }
 
     public static boolean isOperant(char c) { // Checks if the current character is Operant or not
