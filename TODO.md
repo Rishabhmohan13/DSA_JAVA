@@ -8,3 +8,8 @@
 - [x] stringLinkedList.java
 - [x] collectionLinkedList.java
 
+---
+
+ [ ] Bubble Sort 
+ [ ] Insertion Sort 
+ [ ] Selection Sort   
